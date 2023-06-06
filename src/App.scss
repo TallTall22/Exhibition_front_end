@@ -1,0 +1,10 @@
+:root{
+  --major:#b42b05;
+  --background-color: #f4f4f4;
+}
+
+body,
+html{
+  background-color: var(--background-color);
+  font-family: arial, "微軟正黑體";
+}
