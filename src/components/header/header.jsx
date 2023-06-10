@@ -2,7 +2,7 @@ import {Nav, Navbar} from 'react-bootstrap'
 import style from './header.module.scss'
 function  Header(){
   return (
-    <header>
+    <header className={style.header}>
       <Navbar className={style.navbar}>
           <h1 className={style.navbarBrand}><a href='/'>文物展覽網</a></h1>
           <input type='checkbox' className={style.navbarToggle} id='navbar-toggle'/>
