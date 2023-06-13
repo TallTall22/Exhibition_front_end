@@ -45,7 +45,56 @@ export const adminCreateCollections=async ()=>{
 
 export const adminPostCollection=async ({name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image})=>{
   try{
-    const res=await axios.post(baseUrl+'/collections',{name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image})
+    const res=await axios.post(baseUrl+'/collections',
+    {name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image},{
+      headers:{"Content-Type":'multipart/form-data'}
+    })
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminGetCollection=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.get(baseUrl+`/collections/${id}`)
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminEditCollection=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.get(baseUrl+`/collections/${id}/edit`)
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminPutCollection=async (payload)=>{
+  try{
+    const {id,name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image}=payload
+    const res=await axios.put(baseUrl+`/collections/${id}`,{name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image},{
+      headers:{"Content-Type":'multipart/form-data'}
+    })
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminDeleteCollection=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.delete(baseUrl+`/collections/${id}`)
     const data=await res.data
     return data
   }catch(err){

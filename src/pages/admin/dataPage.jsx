@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {Tabs,Tab,Table, Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { adminGetCollections, adminGetExhibitions, adminGetUsers, adminGetVideos, adminPatchUsers } from '../../api/admin'
+import { Link, useNavigate } from 'react-router-dom'
+import { adminDeleteCollection, adminGetCollections, adminGetExhibitions, adminGetUsers, adminGetVideos, adminPatchUsers } from '../../api/admin'
 
 function TableHead({tableHeader}){
   return(
@@ -15,20 +15,21 @@ function TableHead({tableHeader}){
       </thead>
   )
 }
-function TableContent({id,name,dataList,content,isAdmin,onLinkClick}){
+function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClick}){
+  const navigate=useNavigate()
   const lastColumn=(isAdmin)=>{
      if(dataList==='users'){
       return (
-        <Link to='/admin/collections' onClick={()=>onLinkClick?.({id,isAdmin})}>{isAdmin?'set as user':'set as Admin'}</Link>
+        <Link to='/admin/data' onClick={()=>onLinkClick?.({id,isAdmin})}>{isAdmin?'set as user':'set as Admin'}</Link>
       )
     }else if(dataList==='videos'){
       return
     }else{
       return(
         <>
-          <Button variant='success' className='mr-2' href=''>edit</Button>{' '}
-          <Button variant='secondary' href=''>show</Button>{' '}
-          <Button variant='danger' href=''>delete</Button>
+          <Button variant='success' className='mr-2' onClick={()=>navigate(`/admin/${dataList}/${id}/edit`)} >edit</Button>{' '}
+          <Button variant='secondary' onClick={()=>navigate(`/admin/${dataList}/${id}`)}>show</Button>{' '}
+          <Button variant='danger' onClick={()=>onDeleteClick?.(id)}>delete</Button>
         </> 
       )
     }
@@ -76,6 +77,15 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick}){
         return user
       })
     })
+  }
+
+
+
+  const handleDeleteCollection=async(id)=>{
+    await adminDeleteCollection({id})
+    setCollecions(prevCollections=>
+      prevCollections.filter(collection=>collection.id!==id)
+    )
   }
 
   useEffect(()=>{
@@ -160,6 +170,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick}){
                 content={collection.category}
                 isAdmin=''
                 dataList='collections'
+                onDeleteClick={handleDeleteCollection}
                 />
                 )
             }
