@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {Tabs,Tab,Table, Button} from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import { adminDeleteCollection, adminGetCollections, adminGetExhibitions, adminGetUsers, adminGetVideos, adminPatchUsers } from '../../api/admin'
+import { adminDeleteCollection, adminDeleteExhibition, adminGetCollections, adminGetExhibitions, adminGetUsers, adminGetVideos, adminPatchUsers } from '../../api/admin'
 
 function TableHead({tableHeader}){
   return(
@@ -85,6 +85,13 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
     await adminDeleteCollection({id})
     setCollecions(prevCollections=>
       prevCollections.filter(collection=>collection.id!==id)
+    )
+  }
+
+  const handleDeleteExhibition=async(id)=>{
+    await adminDeleteExhibition({id})
+    setExhibitions(prevCollections=>
+      prevCollections.filter(exhibition=>exhibition.id!==id)
     )
   }
 
@@ -177,7 +184,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
           </Table>
       </Tab>
       <Tab eventKey="Exhibition" title="Exhibition">
-        <Button href='' className='mb-5'>Create Exhibition</Button>
+        <Button href='/admin/exhibitions/create' className='mb-5'>Create Exhibition</Button>
         <Table hover>
             <TableHead
             tableHeader='Fare'
@@ -191,6 +198,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
                 content={exhibition.fare}
                 isAdmin=''
                 dataList='exhibitions'
+                onDeleteClick={handleDeleteExhibition}
                 />
                 )
             }           

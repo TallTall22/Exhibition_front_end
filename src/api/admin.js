@@ -112,6 +112,66 @@ export const adminGetExhibitions=async ()=>{
   }
 }
 
+export const adminPostExhibition=async (payload)=>{
+  try{
+    const {name, startDate, endDate, description, openTime,location,fare,image}=payload
+    const res=await axios.post(baseUrl+'/exhibitions',
+    {name, startDate, endDate, description, openTime,location,fare,image},{
+      headers:{"Content-Type":'multipart/form-data'}
+    })
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminGetExhibition=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.get(baseUrl+`/exhibitions/${id}`)
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminEditExhibition=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.get(baseUrl+`/exhibitions/${id}/edit`)
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminPutExhibition=async (payload)=>{
+  try{
+    const {id,name, startDate, endDate, description, openTime,location,fare,image}=payload
+    const res=await axios.put(baseUrl+`/exhibitions/${id}`,{name, startDate, endDate, description, openTime,location,fare,image},{
+      headers:{"Content-Type":'multipart/form-data'}
+    })
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const adminDeleteExhibition=async (payload)=>{
+  try{
+    const {id}=payload
+    const res=await axios.delete(baseUrl+`/exhibitions/${id}`)
+    const data=await res.data
+    return data
+  }catch(err){
+    console.error(err)
+  }
+}
+
 export const adminGetVideos=async ()=>{
   try{
     const res=await axios.get(baseUrl+'/videos')

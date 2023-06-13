@@ -70,7 +70,7 @@ import { useNavigate, useParams } from "react-router-dom"
       />
       <Form.Group className="mb-3">
         <Form.Label>Category</Form.Label>
-        <Form.Select className={style.formControl} name="categoryId" defaultValue={collection.categoryId} aria-label="Default select example">
+        <Form.Select className={style.formControl} name="categoryId" value={collection.categoryId} aria-label="Default select example">
           <option>種類</option>
           {
             categories.map(category=>

@@ -165,9 +165,9 @@ import { adminCreateCollections, adminPostCollection } from "../../api/admin"
               )
           }
         </Form.Select>
+      </Form.Group>
 
         {/*description */}
-      </Form.Group>
       <Form.Group className="mb-3" controlId="CreateCollectionDescription">
         <Form.Label>Description</Form.Label>
         <Form.Control  className={style.formControl} name="description" value={description} onChange={handleDescriptionChange} as="textarea" placeholder="Please enter collection description..." rows={3} />

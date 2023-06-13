@@ -6,6 +6,9 @@ import CollectionCreatePage from './pages/admin/collectionCreatePage';
 import CollectionEditPage from './pages/admin/collectionEditPage';
 import CollectionGetPage from './pages/admin/collectionPage';
 import DataPage from './pages/admin/dataPage';
+import ExhibitionCreatePage from './pages/admin/exhibitionCreatePage';
+import ExhibitionEditPage from './pages/admin/exhibitionEditPage';
+import ExhibitionGetPage from './pages/admin/exhibitionPage';
 import './reset.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
@@ -20,6 +23,9 @@ function App() {
             <Route path='admin/collections/:id/edit' element={<CollectionEditPage/>}/>
             <Route path='admin/collections/:id' element={<CollectionGetPage/>}/>
             <Route path='admin/collections/create' element={<CollectionCreatePage/>}/>
+            <Route path='admin/exhibitions/create' element={<ExhibitionCreatePage/>}/>
+            <Route path='admin/exhibitions/:id/edit' element={<ExhibitionEditPage/>}/>
+            <Route path='admin/exhibitions/:id' element={<ExhibitionGetPage/>}/>
           </Routes>
           </Main>
         <Footer/>            
