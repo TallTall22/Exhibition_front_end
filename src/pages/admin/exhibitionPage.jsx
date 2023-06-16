@@ -28,7 +28,7 @@ function ExhibitionGetPage(){
       <Col sm={4}>
       <Figure className="d-flex justify-content-center">
       <Figure.Image
-        width={200}
+        width={1000}
         src={exhibition.image}
         alt={exhibition.name}
       />

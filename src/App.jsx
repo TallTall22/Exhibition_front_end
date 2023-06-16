@@ -9,6 +9,8 @@ import DataPage from './pages/admin/dataPage';
 import ExhibitionCreatePage from './pages/admin/exhibitionCreatePage';
 import ExhibitionEditPage from './pages/admin/exhibitionEditPage';
 import ExhibitionGetPage from './pages/admin/exhibitionPage';
+import HomePage from './pages/forestage/homePage/homePage';
+import VideoPage from './pages/forestage/videoPage';
 import './reset.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
@@ -26,6 +28,8 @@ function App() {
             <Route path='admin/exhibitions/create' element={<ExhibitionCreatePage/>}/>
             <Route path='admin/exhibitions/:id/edit' element={<ExhibitionEditPage/>}/>
             <Route path='admin/exhibitions/:id' element={<ExhibitionGetPage/>}/>
+            <Route path='/videos' element={<VideoPage/>}/>
+            <Route path='/' element={<HomePage/>}/>
           </Routes>
           </Main>
         <Footer/>            

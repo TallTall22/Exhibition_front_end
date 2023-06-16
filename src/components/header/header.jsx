@@ -11,7 +11,7 @@ function  Header(){
               <Nav.Link className={style.navLink}>展覽</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
-              <Nav.Link className={style.navLink}>影片專區</Nav.Link>
+              <Nav.Link href='/videos' className={style.navLink}>影片專區</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
               <Nav.Link className={style.navLink}>會員專區</Nav.Link>
