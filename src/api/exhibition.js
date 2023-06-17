@@ -9,3 +9,12 @@ export const getRecentExhibitions=async()=>{
     console.error(err)
   }
 }
+
+export const getExhibitions=async()=>{
+  try{
+    const res=await axios.get(baseUrl+'/exhibitions')
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}

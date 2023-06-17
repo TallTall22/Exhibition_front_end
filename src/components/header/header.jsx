@@ -1,5 +1,6 @@
 import {Nav, Navbar} from 'react-bootstrap'
 import style from './header.module.scss'
+import { NavLink } from 'react-router-dom'
 function  Header(){
   return (
     <header className={style.header}>
@@ -8,10 +9,10 @@ function  Header(){
           <input type='checkbox' className={style.navbarToggle} id='navbar-toggle'/>
         <Nav className={style.nav} as='ul'>
           <Nav.Item className={style.navItem} as='li'>     
-              <Nav.Link className={style.navLink}>展覽</Nav.Link>
+              <Nav.Link as={NavLink} to='/exhibitions' className={style.navLink}>展覽</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
-              <Nav.Link href='/videos' className={style.navLink}>影片專區</Nav.Link>
+              <Nav.Link as={NavLink} to='/videos' className={style.navLink}>影片專區</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
               <Nav.Link className={style.navLink}>會員專區</Nav.Link>
