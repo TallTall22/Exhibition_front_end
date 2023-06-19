@@ -58,7 +58,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
 
 
  function DataPage(){
-  const [key,setKey]=useState('User')
+  const [key,setKey]=useState('Collection')
   const [users,setUsers]=useState([])
   const [collections,setCollecions]=useState([])
   const [exhibitions,setExhibitions]=useState([])
@@ -107,7 +107,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
     const getColllectionsAsync=async()=>{
       try{
         const collections=await adminGetCollections()
-        setCollecions(collections.map(collection=>({...collection})))
+        setCollecions(collections)
       }catch(err){
         console.error(err)
       } 
@@ -115,7 +115,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
     const getExhibtionsAsync=async()=>{
       try{
         const exhibitions=await adminGetExhibitions()
-        setExhibitions(exhibitions.map(exhibition=>({...exhibition})))
+        setExhibitions(exhibitions)
       }catch(err){
         console.error(err)
       } 

@@ -9,7 +9,8 @@ import DataPage from './pages/admin/dataPage';
 import ExhibitionCreatePage from './pages/admin/exhibitionCreatePage';
 import ExhibitionEditPage from './pages/admin/exhibitionEditPage';
 import ExhibitionGetPage from './pages/admin/exhibitionPage';
-import ExhibitionsPage from './pages/forestage/exhibitionPage/exhibitionsPage';
+import ExhibitionPage from './pages/forestage/exhibitionsPage/exhibitionPage';
+import ExhibitionsPage from './pages/forestage/exhibitionsPage/exhibitionsPage';
 import HomePage from './pages/forestage/homePage/homePage';
 import VideoPage from './pages/forestage/videoPage';
 import './reset.css'
@@ -31,6 +32,7 @@ function App() {
             <Route path='admin/exhibitions/:id' element={<ExhibitionGetPage/>}/>
             <Route path='/videos' element={<VideoPage/>}/>
             <Route path='/exhibitions' element={<ExhibitionsPage/>}/>
+            <Route path='/exhibitions/:id' element={<ExhibitionPage/>}/>
             <Route path='/' element={<HomePage/>}/>
           </Routes>
           </Main>

@@ -18,3 +18,12 @@ export const getExhibitions=async()=>{
     console.error(err)
   }
 }
+
+export const getExhibition=async(id)=>{
+  try{
+    const res=await axios.get(baseUrl+`/exhibitions/${id}`)
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}
