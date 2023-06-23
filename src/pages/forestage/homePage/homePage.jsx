@@ -64,12 +64,12 @@ function HomePage(){
             </Link>
           </div>
           <div className={style.memberWrapper}>
-            <Link className={style.link}>
+            <Link to='/tickets' className={style.link}>
             <h2 className={style.text}>會員專區</h2>
             <Figure className={style.figure}>
                <Figure.Image className={style.image}
                  src={memberPicture}
-                 alt='member'
+                 alt='tickets'
                  />
                 </Figure>
             </Link>

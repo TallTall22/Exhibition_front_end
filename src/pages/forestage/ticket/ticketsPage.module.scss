@@ -1,0 +1,23 @@
+.exhibitionWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  .card {
+    width: 25rem;
+    margin: 0.5rem;
+
+    .image {
+      width: 25rem;
+      height: 230px;
+      overflow: hidden;
+      object-fit: cover;
+      opacity: 1;
+      transition: opacity 4s ease;
+    }
+
+
+  }
+}

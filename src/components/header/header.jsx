@@ -2,6 +2,7 @@ import {Nav, Navbar} from 'react-bootstrap'
 import style from './header.module.scss'
 import { NavLink } from 'react-router-dom'
 function  Header(){
+
   return (
     <header className={style.header}>
       <Navbar className={style.navbar}>
@@ -11,11 +12,14 @@ function  Header(){
           <Nav.Item className={style.navItem} as='li'>     
               <Nav.Link as={NavLink} to='/exhibitions' className={style.navLink}>展覽</Nav.Link>
           </Nav.Item>
+          <Nav.Item className={style.navItem} as='li'>     
+              <Nav.Link as={NavLink} to='/collections' className={style.navLink}>文物資料</Nav.Link>
+          </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
               <Nav.Link as={NavLink} to='/videos' className={style.navLink}>影片專區</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
-              <Nav.Link className={style.navLink}>會員專區</Nav.Link>
+              <Nav.Link as={NavLink} to='/tickets' className={style.navLink}>會員專區</Nav.Link>
           </Nav.Item>
         </Nav>
         <label for='navbar-toggle' className={style.navbarToggleLabel}>

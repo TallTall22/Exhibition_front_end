@@ -1,0 +1,148 @@
+
+%done-phase{
+  .circleContainer{
+    background-color: var(--major);
+    .number{
+      color:#ffffff
+    }
+  }
+}
+
+.progress{
+  padding: 2rem;
+  .progressController{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .progressBar{
+    display: flex;
+    flex-grow: 1;
+    min-width: 60px;
+    height: 1px;
+    margin: 0px 8px;
+    border-width: 2px;
+    border-style: solid;
+  }
+  .progressGroup{
+    display: flex;
+    .circleContainer{
+      display: inline-block;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      .number{
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 24px;
+      text-align: center;
+      }
+    }
+    
+    .text{
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+}
+
+.formContainer{
+  .part{
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  table{
+    border: 1px solid #000;
+    td,th{
+      padding: 1rem;
+    }
+    th{
+      background-color: #fff;
+    }
+  }
+}
+  .progressButton{
+    .buttonGroup{
+      
+        display: flex;
+        justify-content: space-around;
+      
+    }
+  }
+}
+
+
+.progressController{
+  
+  //step=1
+  span[step="1"] {
+    &[dataPhase='quantity']{
+      @extend %done-phase;
+    }
+  }
+
+  //step=2
+  span[step="2"]{
+    &[dataPhase='quantity'],
+    &[dataPhase='confirmTicket'] {
+        @extend %done-phase;
+      }
+    &[dataOrder='1']{
+      border-color: var(--major);
+      background-color: var(--major);
+    }
+  }
+
+    //step=3
+    span[step="3"] {
+  
+      &[dataPhase='quantity'],
+      &[dataPhase='confirmTicket'],
+      &[dataPhase='paidInfo'] {
+        @extend %done-phase;
+      }
+  
+      &[dataOrder='1'],
+      &[dataOrder='2'] {
+        border-color: var(--major);
+        background-color: var(--major);
+      }
+    }
+}
+
+.formContainer,
+.progressButton{
+  //step=1
+    div[step="1"] {
+      &[dataPhase='confirmTicket'],
+      &[dataPhase='paidInfo'] {
+        display: none
+      }
+    }
+  
+    //step=2
+    div[step="2"] {
+ 
+      &[dataPhase='quantity'],
+      &[dataPhase='paidInfo'] {
+        display: none
+      }
+    }
+  
+    //step=3
+    div[step="3"] {
+  
+      &[dataPhase='quantity'],
+      &[dataPhase='confirmTicket'] {
+         display: none
+      }
+    }
+}

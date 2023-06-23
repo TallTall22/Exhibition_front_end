@@ -14,7 +14,7 @@ export default function StyledCreateInputgroup({label,type,name,placeholder,cont
   return(
     <Form.Group className="mb-3" controlId={controlId}>
         <Form.Label>{label}</Form.Label>
-        <Form.Control ref={ref} className={style.formControl} value={value} onChange={onChange} type={type} name={name} placeholder={placeholder} />
+        <Form.Control className={style.formControl} value={value} onChange={onChange} type={type} name={name} placeholder={placeholder} />
     </Form.Group>
   )
 }
