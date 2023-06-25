@@ -9,8 +9,9 @@ function ExhibitionGetPage(){
   const [exhibition,setExhibition]=useState({})
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
     const getExhibitionAsync=async()=>{
-      const data=await adminGetExhibition({id})
+      const data=await adminGetExhibition({id,authToken})
       const exhibition=data.exhibition
       console.log(data)
       setExhibition(exhibition)

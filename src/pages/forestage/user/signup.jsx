@@ -34,12 +34,12 @@ function Signup(){
     if (email.length === 0) return;
     if (password.length === 0) return;
     if(confirmPassword.length===0)return;
-    const success=await signUp({name,email,password,confirmPassword})
-    if(success){
+    const data=await signUp({name,email,password,confirmPassword})
+    if(data.status==='success'){
       setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
 
     navigate('/signin')
     }

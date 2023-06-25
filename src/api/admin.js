@@ -2,9 +2,13 @@ import axios from "axios";
 
 const baseUrl='http://localhost:3001/api/admin'
 
-export const adminGetUsers=async ()=>{
+export const adminGetUsers=async (authToken)=>{
   try{
-    const res=await axios.get(baseUrl+'/users')
+    const res=await axios.get(baseUrl+'/users',{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data.users
     return data
   }catch(err){
@@ -14,8 +18,12 @@ export const adminGetUsers=async ()=>{
 
 export const adminPatchUsers=async (payload)=>{
   try{
-    const {id,isAdmin} =payload
-    const res=await axios.patch(baseUrl+`/users/${id}`,{isAdmin})
+    const {id,isAdmin,authToken} =payload
+    const res=await axios.patch(baseUrl+`/users/${id}`,{isAdmin},{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data.user
     return data
   }catch(err){
@@ -23,9 +31,13 @@ export const adminPatchUsers=async (payload)=>{
   }
 }
 
-export const adminGetCollections=async ()=>{
+export const adminGetCollections=async (authToken)=>{
   try{
-    const res=await axios.get(baseUrl+'/collections')
+    const res=await axios.get(baseUrl+'/collections',{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data.collections
     return data
   }catch(err){
@@ -33,9 +45,13 @@ export const adminGetCollections=async ()=>{
   }
 }
 
-export const adminCreateCollections=async ()=>{
+export const adminCreateCollections=async (authToken)=>{
   try{
-    const res=await axios.get(baseUrl+'/collections/create')
+    const res=await axios.get(baseUrl+'/collections/create',{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -43,11 +59,13 @@ export const adminCreateCollections=async ()=>{
   }
 }
 
-export const adminPostCollection=async ({name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image})=>{
+export const adminPostCollection=async ({name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image,authToken})=>{
   try{
     const res=await axios.post(baseUrl+'/collections',
     {name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image},{
-      headers:{"Content-Type":'multipart/form-data'}
+      headers:{"Content-Type":'multipart/form-data',
+      Authorization:'Bearer '+authToken
+    }
     })
     const data=await res.data
     return data
@@ -58,8 +76,12 @@ export const adminPostCollection=async ({name, slogan, artMaker, description, ar
 
 export const adminGetCollection=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.get(baseUrl+`/collections/${id}`)
+    const {id,authToken}=payload
+    const res=await axios.get(baseUrl+`/collections/${id}`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -69,8 +91,12 @@ export const adminGetCollection=async (payload)=>{
 
 export const adminEditCollection=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.get(baseUrl+`/collections/${id}/edit`)
+    const {id,authToken}=payload
+    const res=await axios.get(baseUrl+`/collections/${id}/edit`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -80,9 +106,13 @@ export const adminEditCollection=async (payload)=>{
 
 export const adminPutCollection=async (payload)=>{
   try{
-    const {id,name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image}=payload
+    const {id,name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image,authToken}=payload
     const res=await axios.put(baseUrl+`/collections/${id}`,{name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image},{
-      headers:{"Content-Type":'multipart/form-data'}
+      headers:
+      {
+        "Content-Type":'multipart/form-data',
+        Authorization:'Bearer '+authToken
+    }
     })
     const data=await res.data
     return data
@@ -93,8 +123,12 @@ export const adminPutCollection=async (payload)=>{
 
 export const adminDeleteCollection=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.delete(baseUrl+`/collections/${id}`)
+    const {id,authToken}=payload
+    const res=await axios.delete(baseUrl+`/collections/${id}`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -102,9 +136,13 @@ export const adminDeleteCollection=async (payload)=>{
   }
 }
 
-export const adminGetExhibitions=async ()=>{
+export const adminGetExhibitions=async (authToken)=>{
   try{
-    const res=await axios.get(baseUrl+'/exhibitions')
+    const res=await axios.get(baseUrl+'/exhibitions',{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data.exhibitions
     return data
   }catch(err){
@@ -114,10 +152,14 @@ export const adminGetExhibitions=async ()=>{
 
 export const adminPostExhibition=async (payload)=>{
   try{
-    const {name, startDate, endDate, description, openTime,location,fare,image}=payload
+    const {name, startDate, endDate, description, openTime,location,fare,image,authToken}=payload
     const res=await axios.post(baseUrl+'/exhibitions',
     {name, startDate, endDate, description, openTime,location,fare,image},{
-      headers:{"Content-Type":'multipart/form-data'}
+      headers:
+      {
+        "Content-Type":'multipart/form-data',
+        Authorization:'Bearer '+authToken
+    }
     })
     const data=await res.data
     return data
@@ -128,8 +170,12 @@ export const adminPostExhibition=async (payload)=>{
 
 export const adminGetExhibition=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.get(baseUrl+`/exhibitions/${id}`)
+    const {id,authToken}=payload
+    const res=await axios.get(baseUrl+`/exhibitions/${id}`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -139,8 +185,12 @@ export const adminGetExhibition=async (payload)=>{
 
 export const adminEditExhibition=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.get(baseUrl+`/exhibitions/${id}/edit`)
+    const {id,authToken}=payload
+    const res=await axios.get(baseUrl+`/exhibitions/${id}/edit`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -150,9 +200,14 @@ export const adminEditExhibition=async (payload)=>{
 
 export const adminPutExhibition=async (payload)=>{
   try{
-    const {id,name, startDate, endDate, description, openTime,location,fare,image}=payload
+    const {id,name, startDate, endDate, description, openTime,location,fare,image,authToken}=payload
     const res=await axios.put(baseUrl+`/exhibitions/${id}`,{name, startDate, endDate, description, openTime,location,fare,image},{
-      headers:{"Content-Type":'multipart/form-data'}
+      headers:{
+        "Content-Type":'multipart/form-data',
+        Authorization:'Bearer '+authToken
+    }
+      
+
     })
     const data=await res.data
     return data
@@ -163,8 +218,12 @@ export const adminPutExhibition=async (payload)=>{
 
 export const adminDeleteExhibition=async (payload)=>{
   try{
-    const {id}=payload
-    const res=await axios.delete(baseUrl+`/exhibitions/${id}`)
+    const {id,authToken}=payload
+    const res=await axios.delete(baseUrl+`/exhibitions/${id}`,{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data
     return data
   }catch(err){
@@ -172,9 +231,13 @@ export const adminDeleteExhibition=async (payload)=>{
   }
 }
 
-export const adminGetVideos=async ()=>{
+export const adminGetVideos=async (authToken)=>{
   try{
-    const res=await axios.get(baseUrl+'/videos')
+    const res=await axios.get(baseUrl+'/videos',{
+      headers:{
+        Authorization:'Bearer '+authToken
+      }
+    })
     const data=await res.data.videos
     return data
   }catch(err){

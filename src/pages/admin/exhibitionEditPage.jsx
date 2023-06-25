@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom"
   const handleSubmit=async(e)=>{
     e.preventDefault()
     const ExhibitionData=new FormData(formRef.current)
+    const authToken=localStorage.getItem('authToken')
     const data={
       id:id,
       name:ExhibitionData.get('name'),
@@ -24,7 +25,8 @@ import { useNavigate, useParams } from "react-router-dom"
       openTime:ExhibitionData.get('openTime'),
       image:ExhibitionData.get('image'),
       location:ExhibitionData.get('location'),
-      fare:ExhibitionData.get('fare')
+      fare:ExhibitionData.get('fare'),
+      authToken
     }
     
     await adminPutExhibition(data)
@@ -33,8 +35,9 @@ import { useNavigate, useParams } from "react-router-dom"
   }
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
     const getExhibitionAsync=async()=>{
-      const data=await adminEditExhibition({id})
+      const data=await adminEditExhibition({id,authToken})
       const exhibition=data.exhibition
       setExhibition(exhibition)
     }

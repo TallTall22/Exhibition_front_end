@@ -1,8 +1,8 @@
 import { Button, Figure, Form } from 'react-bootstrap'
 import style from './ticketPage.module.scss'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getTicketExhibition } from '../../../api/ticket'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getTicketExhibition, postTicket } from '../../../api/ticket'
 import StyledCreateInputgroup from '../../../components/input/input'
 
 function TicketPage(){
@@ -17,6 +17,7 @@ function TicketPage(){
   const [step,setStep]=useState(1)
   const params=useParams()
   const {id}=params
+  const navigate=useNavigate()
 
   const handleQuantityChange=(e)=>{
     setQuantity(e.target.value)
@@ -50,19 +51,38 @@ function TicketPage(){
     setStep(step+1)
   }
 
+  const handleSubmit=async(e)=>{
+      e.preventDefault()
+      const authToken=localStorage.getItem('authToken')
+      if(!quantity)return
+      if(!cvc) return;
+      if(!validDate)return
+      if(!cardNum)return 
+      await postTicket({id,authToken,quantity})
+      navigate('/tickets')
+  }
+
   useEffect(()=>{
     const getExhibitionAsync=async()=>{
-      const data=await getTicketExhibition(id)
+      const authToken=localStorage.getItem('authToken')
+      const data=await getTicketExhibition({id,authToken})
       const exhibition=data.exhibition
       setExhibition(exhibition)
     }
     const getUserAsync=async()=>{
-      const data=await getTicketExhibition(id)
+      const authToken=localStorage.getItem('authToken')
+      const data=await getTicketExhibition({id,authToken})
       const user=data.user
       setUser(user)
+      setName(user.name)
+      setEmail(user.email)
     }
+
+    getUserAsync()
     getExhibitionAsync()
   },[id])
+
+     
   return(
     <div className={style.progress}>
       <div className={style.progressController}>
@@ -111,7 +131,7 @@ function TicketPage(){
                 </tr>
               </tbody>
             </table>
-            <table striped bordered hover>
+            <table>
               <thead>
                 <tr>
                   <th>票價</th>
@@ -162,10 +182,12 @@ function TicketPage(){
               <h6>訂單</h6>
               <table>
                 <thead>
-                  <th>展覽名稱</th>
-                  <th>票價</th>
-                  <th>張數</th>
-                  <th>合計</th>
+                  <tr>
+                    <th>展覽名稱</th>
+                    <th>票價</th>
+                    <th>張數</th>
+                    <th>合計</th>
+                  </tr>  
                 </thead>
                 <tbody>
                   <tr>
@@ -237,7 +259,7 @@ function TicketPage(){
             </div>
             <div className={style.buttonGroup} dataPhase='paidInfo' step={step}>
               <Button variant='outline-secondary' onClick={handlePrevClick} >上一步</Button>
-              <Button>完成訂單</Button>
+              <Button onClick={handleSubmit}>完成訂單</Button>
             </div>
         </div>
     </div>

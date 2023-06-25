@@ -54,7 +54,8 @@ import { adminCreateCollections, adminPostCollection } from "../../api/admin"
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    await adminPostCollection({name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image})
+    const authToken=localStorage.getItem('authToken')
+    await adminPostCollection({name, slogan, artMaker, description, artRemark, exhibitionId,categoryId,image,authToken})
     setName('');
     setSlogan('');
     setArtMaker('');
@@ -72,13 +73,14 @@ import { adminCreateCollections, adminPostCollection } from "../../api/admin"
   }
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
     const getCategoriesAsync=async()=>{
-      const data=await adminCreateCollections()
+      const data=await adminCreateCollections(authToken)
       const categories=data.categories
       setCategories(categories)
     }
     const getExhibitionssAsync=async()=>{
-      const data=await adminCreateCollections()
+      const data=await adminCreateCollections(authToken)
       const exhibitions=data.exhibitions
       setExhibitions(exhibitions)
     }

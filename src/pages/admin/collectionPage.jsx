@@ -9,8 +9,9 @@ function CollectionGetPage(){
   const [collection,setCollection]=useState({})
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
     const getCollectionAsync=async()=>{
-      const data=await adminGetCollection({id})
+      const data=await adminGetCollection({id,authToken})
       const collection=data.collection
       console.log(data)
       setCollection(collection)

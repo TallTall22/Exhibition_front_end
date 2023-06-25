@@ -17,6 +17,7 @@ import { useNavigate, useParams } from "react-router-dom"
   const handleSubmit=async(e)=>{
     e.preventDefault()
     const formData=new FormData(formRef.current)
+    const authToken=localStorage.getItem('authToken')
     const data={
       id:id,
       name:formData.get('name'),
@@ -26,7 +27,8 @@ import { useNavigate, useParams } from "react-router-dom"
       artRemark:formData.get('artRemark'),
       image:formData.get('image'),
       exhibitionId:formData.get('exhibitionId'),
-      description:formData.get('description')
+      description:formData.get('description'),
+      authToken
     }
     
     await adminPutCollection(data)
@@ -35,18 +37,19 @@ import { useNavigate, useParams } from "react-router-dom"
   }
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
     const getCollectionAsync=async()=>{
-      const data=await adminEditCollection({id})
+      const data=await adminEditCollection({id,authToken})
       const collection=data.collection
       setCollection(collection)
     }
     const getCategoriesAsync=async()=>{
-      const data=await adminEditCollection({id})
+      const data=await adminEditCollection({id,authToken})
       const categories=data.categories
       setCategories(categories)
     }
     const getExhibitionsAsync=async()=>{
-      const data=await adminEditCollection({id})
+      const data=await adminEditCollection({id,authToken})
       const exhibitions=data.exhibitions
       setExhibitions(exhibitions)
     }

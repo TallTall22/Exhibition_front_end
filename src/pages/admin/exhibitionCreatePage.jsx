@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap"
 import StyledCreateInputgroup from "../../components/input/input"
 import style from '../../components/input/input.module.scss'
-import { useState } from "react"
+import {  useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import {  adminPostExhibition } from "../../api/admin"
 
@@ -53,7 +53,8 @@ import {  adminPostExhibition } from "../../api/admin"
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    await adminPostExhibition({name, startDate, endDate, description, openTime,location,fare,image})
+    const authToken=localStorage.getItem('authToken')
+    await adminPostExhibition({name, startDate, endDate, description, openTime,location,fare,image, authToken})
     setName('');
     setStartDate('');
     setEndDate('');
@@ -69,6 +70,7 @@ import {  adminPostExhibition } from "../../api/admin"
   const handleGoBack=()=>{
     window.history.back()
   }
+
 
 
   return(

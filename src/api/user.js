@@ -20,3 +20,16 @@ export const signIn =async(payload)=>{
     console.error(err)
   }
 }
+
+export const checkUser =async(authToken)=>{
+  try{
+    const res=await axios.get(baseUrl+'/users/check',{
+      headers:{
+        Authorization:'Bearer '+ authToken
+      }
+    })
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}

@@ -82,23 +82,26 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
 
 
   const handleDeleteCollection=async(id)=>{
-    await adminDeleteCollection({id})
+     const authToken=localStorage.getItem('authToken')
+    await adminDeleteCollection({id,authToken})
     setCollecions(prevCollections=>
       prevCollections.filter(collection=>collection.id!==id)
     )
   }
 
   const handleDeleteExhibition=async(id)=>{
-    await adminDeleteExhibition({id})
+     const authToken=localStorage.getItem('authToken')
+    await adminDeleteExhibition({id,authToken})
     setExhibitions(prevCollections=>
       prevCollections.filter(exhibition=>exhibition.id!==id)
     )
   }
 
   useEffect(()=>{
+     const authToken=localStorage.getItem('authToken')
      const getUsersAsync=async()=>{
       try{
-        const users=await adminGetUsers()
+        const users=await adminGetUsers(authToken)
         setUsers(users.map(user=>({...user})))
       }catch(err){
         console.error(err)
@@ -106,7 +109,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
   }
     const getColllectionsAsync=async()=>{
       try{
-        const collections=await adminGetCollections()
+        const collections=await adminGetCollections(authToken)
         setCollecions(collections)
       }catch(err){
         console.error(err)
@@ -114,7 +117,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
   }
     const getExhibtionsAsync=async()=>{
       try{
-        const exhibitions=await adminGetExhibitions()
+        const exhibitions=await adminGetExhibitions(authToken)
         setExhibitions(exhibitions)
       }catch(err){
         console.error(err)
@@ -122,13 +125,12 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
   }
     const getVideosAsync=async()=>{
       try{
-        const videos=await adminGetVideos()
+        const videos=await adminGetVideos(authToken)
         setVideos(videos.map(video=>({...video})))
       }catch(err){
         console.error(err)
       }
   }
-
   getUsersAsync()
   getColllectionsAsync()
   getExhibtionsAsync()

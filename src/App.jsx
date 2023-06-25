@@ -2,6 +2,7 @@ import './App.scss';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Main from './components/main/main';
+import { AuthProvider } from './context/userContext';
 import CollectionCreatePage from './pages/admin/collectionCreatePage';
 import CollectionEditPage from './pages/admin/collectionEditPage';
 import CollectionGetPage from './pages/admin/collectionPage';
@@ -16,6 +17,7 @@ import ExhibitionsPage from './pages/forestage/exhibitionsPage/exhibitionsPage';
 import HomePage from './pages/forestage/homePage/homePage';
 import TicketPage from './pages/forestage/ticket/ticketPage';
 import TicketsPage from './pages/forestage/ticket/ticketsPage';
+import UserTicketPage from './pages/forestage/ticket/userTicketPage';
 import Signin from './pages/forestage/user/signin';
 import Signup from './pages/forestage/user/signup';
 import VideoPage from './pages/forestage/videoPage';
@@ -25,7 +27,8 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>           
+      <BrowserRouter> 
+      <AuthProvider>         
         <Header/>
         <Main>
           <Routes>
@@ -41,6 +44,7 @@ function App() {
             <Route path='/exhibitions' element={<ExhibitionsPage/>}/>
             <Route path='/collections/:id' element={<CollectionPage/>}/>
             <Route path='/collections' element={<CollectionsPage/>}/>
+            <Route path='/tickets/user' element={<UserTicketPage/>}/>
             <Route path='/tickets/:id' element={<TicketPage/>}/>
             <Route path='/tickets' element={<TicketsPage/>}/>
             <Route path='/signup' element={<Signup/>}/>
@@ -48,7 +52,8 @@ function App() {
             <Route path='/' element={<HomePage/>}/>
           </Routes>
           </Main>
-        <Footer/>            
+        <Footer/>  
+        </AuthProvider>           
       </BrowserRouter>
     </div>
   );
