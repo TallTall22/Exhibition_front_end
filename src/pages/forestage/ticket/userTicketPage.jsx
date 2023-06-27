@@ -44,6 +44,7 @@ function UserTicketPage(){
               <th>訂單編號</th>
               <th>訂購時間</th>
               <th>購買節目</th>
+              <th>張數</th>
               <th></th>
             </tr>
           </thead>
@@ -54,6 +55,7 @@ function UserTicketPage(){
                 <td>{ticket.id}</td>
                 <td>{ticket.createdAt}</td>
                 <td>{ticket.Exhibition.name}</td>
+                <td>{ticket.quantity}</td>
                 <td><Button onClick={()=>handleUseTicket(ticket.id)}>使用</Button>{' '}<Button onClick={()=>handleDeleteTicket(ticket.id)}variant="danger">刪除</Button></td>
               </tr>
           )
@@ -70,7 +72,7 @@ function UserTicketPage(){
               <th>訂單編號</th>
               <th>訂購時間</th>
               <th>購買節目</th>
-              <th></th>
+              <th>張數</th>
             </tr>
           </thead>
           <tbody>
@@ -80,7 +82,7 @@ function UserTicketPage(){
                 <td>{ticket.id}</td>
                 <td>{ticket.createdAt}</td>
                 <td>{ticket.Exhibition.name}</td>
-                <td><Button >使用</Button>{' '}<Button variant="danger">刪除</Button></td>
+                <td>{ticket.quantity}</td>
               </tr>
           )
               

@@ -35,13 +35,13 @@ function CollectionsPage(){
     <div className="">
       <div className={style.checkboxWrapper}>
         <Nav className={style.nav}>
-          <Nav.Item>
-              <Nav.Link  onClick={()=>setCategoryId('')} >全部</Nav.Link>
+          <Nav.Item className={style.navItem}>
+              <Nav.Link className={style.navLink}  onClick={()=>setCategoryId('')} >全部</Nav.Link>
           </Nav.Item>
         {
           categories.map(category=>               
                   <Nav.Item  className={style.navItem} key={category.id}>
-                    <Nav.Link  onClick={()=>setCategoryId(category.id)} >{category.name}</Nav.Link>
+                    <Nav.Link  onClick={()=>setCategoryId(category.id)} className={style.navLink} >{category.name}</Nav.Link>
                   </Nav.Item>             
             )
         }
@@ -51,7 +51,7 @@ function CollectionsPage(){
         {
           collections.map(collection=>
                 <Card className={style.card}>
-                  <Link to={`/member/collections/${collection.id}`}>
+                  <Link to={`/collections/${collection.id}`}>
                 {
                   <Card.Img
                     className={style.image}

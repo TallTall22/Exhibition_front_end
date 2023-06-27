@@ -23,6 +23,7 @@ import { useNavigate, useParams } from "react-router-dom"
       endDate:ExhibitionData.get('endDate'),
       description:ExhibitionData.get('description'),
       openTime:ExhibitionData.get('openTime'),
+      endTime:ExhibitionData.get('endTime'),
       image:ExhibitionData.get('image'),
       location:ExhibitionData.get('location'),
       fare:ExhibitionData.get('fare'),
@@ -82,11 +83,21 @@ import { useNavigate, useParams } from "react-router-dom"
       {/*Open Time*/}
         <StyledEditInputgroup
           label='Open Time'
-          type='text'
+          type='time'
           name='openTime'
           defaultValue={exhibition.openTime}
           placeholder='Please enter exhibition openTime'
           controlId="CreateExhibitionOpenTime"
+        />
+
+      {/*End Time*/}
+        <StyledEditInputgroup
+          label='End Time'
+          type='time'
+          name='endTime'
+          defaultValue={exhibition.endTime}
+          placeholder='Please enter exhibition endTime'
+          controlId="CreateExhibitionEndTime"
         />
 
         {/*image */}

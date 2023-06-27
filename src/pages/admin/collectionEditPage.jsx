@@ -30,7 +30,7 @@ import { useNavigate, useParams } from "react-router-dom"
       description:formData.get('description'),
       authToken
     }
-    
+    if(!data.exhibitionId) return;
     await adminPutCollection(data)
     navigate('/admin/data')
 

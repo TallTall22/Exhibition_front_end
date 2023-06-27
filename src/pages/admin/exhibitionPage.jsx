@@ -41,6 +41,7 @@ function ExhibitionGetPage(){
         <li>End Date:{exhibition.endDate}</li>
         <li>Fare:{exhibition.fare}</li>
         <li>Open Time:{exhibition.openTime}</li>
+        <li>End Time:{exhibition.endTime}</li>
         <li className="mb-2">Location:{exhibition.location}</li>
         <li>{exhibition.description}</li>
       </ul>

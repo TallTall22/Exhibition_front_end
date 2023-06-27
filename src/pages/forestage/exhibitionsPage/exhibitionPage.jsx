@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getExhibition } from "../../../api/exhibition"
 import { Card, Figure, Nav } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import style from './exhibitionPage.module.scss'
 
 function ExhibitionPage(){
@@ -36,7 +36,7 @@ function ExhibitionPage(){
         <h2>{exhibition.name}</h2>
         <div className={style.time}>
           <h4>{exhibition.startDate} — {exhibition.endDate}</h4>
-          <h5>{exhibition.openTime}</h5>
+          <h5>{exhibition.openTime} — {exhibition.endTime}</h5>
         </div>
       </div>
       <Nav className={style.nav}>
@@ -57,7 +57,9 @@ function ExhibitionPage(){
           {
             collections.map(collection=>
               <Card className={style.card}>
-              <Card.Img variant="top" src={collection.image} />
+                <Link to={`/collections/${collection.id}`}>
+                  <Card.Img variant="top" src={collection.image} />
+                </Link>
               <Card.Body>
                 <Card.Title>{collection.name}</Card.Title>
                 <Card.Text>

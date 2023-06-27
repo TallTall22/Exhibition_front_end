@@ -157,7 +157,7 @@ function TicketPage(){
                       <option value="10">10</option>
                     </Form.Select>
                   </td>
-                  <td>最多可買10張</td>        
+                  <td>最多可買10張 需一次用完</td>        
                 </tr>
               </tbody>
             </table>           
@@ -165,7 +165,7 @@ function TicketPage(){
           <div className={style.part} dataPhase='confirmTicket' step={step}>
             <div className="userInfo">
               <h6>會員基本資料</h6>
-              <table>
+              <table className={style.userData}>
                 <tbody>
                   <tr>
                     <td>姓名</td>

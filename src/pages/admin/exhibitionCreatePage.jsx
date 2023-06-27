@@ -12,6 +12,7 @@ import {  adminPostExhibition } from "../../api/admin"
   const [endDate, setEndDate] = useState('');
   const [description, setDescription] = useState('');
   const [openTime, setOpenTime] = useState('');
+  const [endTime, setEndTime] = useState('');
   const [location, setLocation] = useState('');
   const [fare, setFare] = useState('');
   const [image, setImage] = useState(null);
@@ -35,6 +36,10 @@ import {  adminPostExhibition } from "../../api/admin"
 
   const handleOpenTimeChange = (e) => {
     setOpenTime(e.target.value);
+  };
+
+  const handleEndTimeChange = (e) => {
+    setEndTime(e.target.value);
   };
 
   const handleLocationChange = (e) => {
@@ -92,7 +97,7 @@ import {  adminPostExhibition } from "../../api/admin"
       {/*startDate */}
       <StyledCreateInputgroup
         label='Start Date'
-        type='text'
+        type='date'
         name='startDate'
         value={startDate}
         onChange={handleStartDateChange}
@@ -103,7 +108,7 @@ import {  adminPostExhibition } from "../../api/admin"
       {/*End Date*/}
       <StyledCreateInputgroup
         label='End Date'
-        type='text'
+        type='date'
         name='endDate'
         value={endDate}
         onChange={handleEndDateChange}
@@ -114,12 +119,23 @@ import {  adminPostExhibition } from "../../api/admin"
       {/*Open Time*/}
         <StyledCreateInputgroup
           label='Open Time'
-          type='text'
+          type='time'
           name='openTime'
           value={openTime}
           onChange={handleOpenTimeChange}
           placeholder='Please enter exhibition openTime'
           controlId="CreateExhibitionOpenTime"
+        />
+
+        {/*End Time*/}
+        <StyledCreateInputgroup
+          label='End Time'
+          type='time'
+          name='endTime'
+          value={endTime}
+          onChange={handleEndTimeChange}
+          placeholder='Please enter exhibition endTime'
+          controlId="CreateExhibitionEndTime"
         />
 
         {/*image */}

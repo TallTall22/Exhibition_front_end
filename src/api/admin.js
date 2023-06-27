@@ -152,9 +152,9 @@ export const adminGetExhibitions=async (authToken)=>{
 
 export const adminPostExhibition=async (payload)=>{
   try{
-    const {name, startDate, endDate, description, openTime,location,fare,image,authToken}=payload
+    const {name, startDate, endDate, description, openTime,endTime,location,fare,image,authToken}=payload
     const res=await axios.post(baseUrl+'/exhibitions',
-    {name, startDate, endDate, description, openTime,location,fare,image},{
+    {name, startDate, endDate, description, openTime,endTime,location,fare,image},{
       headers:
       {
         "Content-Type":'multipart/form-data',
@@ -200,14 +200,12 @@ export const adminEditExhibition=async (payload)=>{
 
 export const adminPutExhibition=async (payload)=>{
   try{
-    const {id,name, startDate, endDate, description, openTime,location,fare,image,authToken}=payload
-    const res=await axios.put(baseUrl+`/exhibitions/${id}`,{name, startDate, endDate, description, openTime,location,fare,image},{
+    const {id,name, startDate, endDate, description, openTime,endTime,location,fare,image,authToken}=payload
+    const res=await axios.put(baseUrl+`/exhibitions/${id}`,{name, startDate, endDate, description, openTime,endTime,location,fare,image},{
       headers:{
         "Content-Type":'multipart/form-data',
         Authorization:'Bearer '+authToken
-    }
-      
-
+      }
     })
     const data=await res.data
     return data
