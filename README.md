@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+<h1 align='center'><b>Exhibition</b></h1>
+A simple buy exhibtion ticket platform, developed full-stack with React.js  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+<br>
+<br>
 
-## Available Scripts
+# Table of Contetns
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+  - [Run Server](#run-server)
+- [Seed Users](#seed-users)
+- [Tech Stack](#tech-stack)
+- [Demo](#demo)
 
-In the project directory, you can run:
+<br>
+<br>
 
-### `npm start`
+# Features
+A few things you can do on Exhibition :
+- Browse Exhibition, video and collections
+- Buy tickets for the Exhibtions
+- Use tickets for the Exhibtions 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Getting Started
+## **Prerequisites**
+Make sure you already have `Node.js` and `npm` installed
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Installing**
+1. Clone the project and go to the project directory
+```
+ git clone https://github.com/TallTall22/Exhibition_back_end
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ cd exhibition-back-end
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
-### `npm run eject`
+2. Install dependencies
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.  connect back-end
+please read back-end Readme [Back-end](https://github.com/TallTall22/Exhibition_back_end) 
+```
+git clone https://github.com/TallTall22/Exhibition_back_end
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+<br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Run Server**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Start server
+```
+npm start
+```
 
-### Code Splitting
+If you see  `webpack compiled successfully`  on terminal, it means the server is running successfully and you can start exploring [Exhibition](http://localhost:3000/) on your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+2. Stop server
+```
+control + c
+```
+<br/>
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Seed Users
 
-### Making a Progressive Web App
+## **Admin**
+1 available account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* **account**: asd@asd
+  **password**: qwer
 
-### Advanced Configuration
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## **User**
 
-### Deployment
+* **account**: user1@example.com 
+  **password**: 12345678
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* **account**: user2@example.com
+  **password**: 12345678
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<br/>
+<br/>
+
+# Tech Stack
+- "react": "^18.2.0",
+- "axios": "^1.4.0",
+- "bootstrap": "^5.3.0",
+- "jsonwebtoken": "^9.0.0",
+- "react-bootstrap": "^2.7.4",
+- "react-dom": "^18.2.0",
+- "react-router-dom": "^6.12.1",
+- "react-scripts": "5.0.1",
+- "react-youtube": "^10.1.0",
+- "sass": "^1.62.1",
+- "swiper": "^9.4.1",
+- "web-vitals": "^2.1.4"
+<br>
+<br>
+
+#  Demo
+
+![Home Page & Video Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-1.png)
+---
+![Exhibition Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-2.png)
+---
+![Collection Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-3.png)
+---
+![Ticket Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-4.png)
+---
+![Buy Ticket Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-5.png)
+---
+![Admin Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-6.png)
+---
+![Admin Page](https://github.com/TallTall22/Exhibition_front_end/blob/main/public/picture/Demo-7.png)
+---
+---
