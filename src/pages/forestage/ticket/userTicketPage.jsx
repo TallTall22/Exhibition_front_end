@@ -56,7 +56,7 @@ function UserTicketPage(){
                 <td>{ticket.createdAt}</td>
                 <td>{ticket.Exhibition.name}</td>
                 <td>{ticket.quantity}</td>
-                <td><Button onClick={()=>handleUseTicket(ticket.id)}>使用</Button>{' '}<Button onClick={()=>handleDeleteTicket(ticket.id)}variant="danger">刪除</Button></td>
+                <td><Button onClick={()=>handleUseTicket(ticket.id)}>使用</Button>{' '}<Button onClick={()=>handleDeleteTicket(ticket.id)}variant="danger">退票</Button></td>
               </tr>
           )
               
