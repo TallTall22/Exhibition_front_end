@@ -53,8 +53,8 @@ npm install
 <br/>
 
 3.  connect back-end
-```
 please read back-end Readme [Back-end](https://github.com/TallTall22/Exhibition_back_end) 
+```
 git clone https://github.com/TallTall22/Exhibition_back_end
 npm install
 ```
