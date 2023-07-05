@@ -30,6 +30,7 @@ export const AuthProvider=({children})=>{
             password:data.password,
             confirmPassword:data.confirmPassword
           })
+          return userData
         },
         signin:async(data)=>{
           const userData=await signIn({

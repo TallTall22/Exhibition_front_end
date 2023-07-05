@@ -20,7 +20,7 @@ function ExhibitionsPage(){
       <h1 className='mb-3'>文物展覽</h1>
        {
           exhibitions.map(exhibition=>
-            <div className={style.exhibitionWrapper}>
+            <div key={exhibition.id} className={style.exhibitionWrapper}>
               <Link to={`/exhibitions/${exhibition.id}`}>
               <Figure className={style.figure}>
                 <Figure.Image

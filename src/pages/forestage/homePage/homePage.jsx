@@ -37,7 +37,7 @@ function HomePage(){
           >
             {
               exhibitions.map(exhibition=>
-                <SwiperSlide className={style.swiperSlide}>
+                <SwiperSlide key={exhibition.id} className={style.swiperSlide}>
                   <Link to={`/exhibitions/${exhibition.id}`} className={style.link}>
                     <h2 className={style.text}>{exhibition.name}</h2>
                     <Figure className={style.figure}>

@@ -214,7 +214,7 @@ function TableContent({id,name,dataList,content,isAdmin,onLinkClick,onDeleteClic
             {
               videos.map(video=>
                 <TableContent
-                key={video}
+                key={video.id}
                 id={video.id}
                 name={video.name}
                 content={video.issueDate}

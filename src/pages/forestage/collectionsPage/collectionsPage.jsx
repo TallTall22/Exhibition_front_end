@@ -31,6 +31,10 @@ function CollectionsPage(){
     getCategoriesAsync()
     getPaginationAsync()
   },[categoryId,page])
+
+    if(!collections){
+      return <div className="">loading ...</div> 
+    }
   return (
     <div className="">
       <div className={style.checkboxWrapper}>
@@ -50,7 +54,7 @@ function CollectionsPage(){
       <div className={style.collectionWrapper}>
         {
           collections.map(collection=>
-                <Card className={style.card}>
+                <Card key={collection.id} className={style.card}>
                   <Link to={`/collections/${collection.id}`}>
                 {
                   <Card.Img
