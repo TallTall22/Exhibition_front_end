@@ -3,16 +3,11 @@ import { Button, Card } from "react-bootstrap"
 import { getTicketExhibitions } from "../../../api/ticket"
 import style from './ticketsPage.module.scss'
 import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../../../context/userContext"
 
 function TicketsPage(){
   const [exhibitions,setExhibitions]=useState([])
   const navigate=useNavigate()
-  const {logout}=useAuth()
 
-  const handleLogout=()=>{
-     logout()
-  }
 
   useEffect(()=>{
     const getExhibitionsAsync=async()=>{
@@ -28,8 +23,7 @@ function TicketsPage(){
   return(
     <div className="">
       <div className={style.connection}>
-        <Link className={style.link} to='/tickets/user'>購票明細</Link>/
-        <a href="/signin" onClick={handleLogout}>登出</a>
+        <Link className={style.link} to='/tickets/user'>購票明細</Link>
       </div>
       <div className={style.exhibitionWrapper}>
       {

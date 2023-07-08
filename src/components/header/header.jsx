@@ -41,14 +41,11 @@ function  Header(){
           <Nav.Item className={style.navItem} as='li'>     
               <Nav.Link as={NavLink} to='/exhibitions' className={style.navLink}>展覽</Nav.Link>
           </Nav.Item>
-          <Nav.Item className={style.navItem} as='li'>     
-              <Nav.Link as={NavLink} to='/collections' className={style.navLink}>文物資料</Nav.Link>
-          </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
               <Nav.Link as={NavLink} to='/videos' className={style.navLink}>影片專區</Nav.Link>
           </Nav.Item>
           <Nav.Item className={style.navItem} as='li'>    
-              <Nav.Link as={NavLink} to='/tickets' className={style.navLink}>會員專區</Nav.Link>
+              <Nav.Link as={NavLink} to='/member' className={style.navLink}>會員專區</Nav.Link>
           </Nav.Item>
         </Nav>
         <label for='navbar-toggle' className={style.navbarToggleLabel}>

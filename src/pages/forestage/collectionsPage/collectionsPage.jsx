@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import style from './collectionsPage.module.scss'
 import { getCollections } from '../../../api/collection'
-import { Card, Nav, Pagination } from 'react-bootstrap'
+import { Button, Card, Nav, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { deleteFavorite, postFavorite } from '../../../api/user'
 
 function CollectionsPage(){
   const [collections,setCollections]=useState([])
@@ -11,22 +12,37 @@ function CollectionsPage(){
   const [pagination,setPagination]=useState({})
   const [page,setPage]=useState(1)
 
+  const handlePostFavorite=async(collectionId)=>{
+    const authToken=localStorage.getItem('authToken')
+    await postFavorite({collectionId:collectionId,authToken})
+    window.location.href='/collections'
+  }
+
+    const handleDeleteFavorite=async(collectionId)=>{
+    const authToken=localStorage.getItem('authToken')
+    await deleteFavorite({collectionId:collectionId,authToken})
+    window.location.href='/collections'
+  }
+ 
+
   useEffect(()=>{
+    const authToken=localStorage.getItem('authToken')
     const getCollectionsAsync=async()=>{
-      const data=await getCollections({categoryId,page}) 
-      const collections=data.collections.rows
+      const data=await getCollections({categoryId,page,authToken}) 
+      const collections=data.data
       setCollections(collections)
     }
     const getCategoriesAsync=async()=>{
-      const data=await getCollections({categoryId,page})
+      const data=await getCollections({categoryId,page,authToken})
       const categories=data.categories
       setCategories(categories) 
     }
     const getPaginationAsync=async()=>{
-      const data=await getCollections({categoryId,page})
+      const data=await getCollections({categoryId,page,authToken})
       const pagination=data.pagination
       setPagination(pagination) 
     }
+    
     getCollectionsAsync()
     getCategoriesAsync()
     getPaginationAsync()
@@ -69,8 +85,9 @@ function CollectionsPage(){
                   <Card.Text className={style.text}>
                     {collection.description.substring(0,60)}...
                   </Card.Text>
+                  {collection.isFavorited?<Button onClick={()=>handleDeleteFavorite(collection.id)} variant='danger'>移除收藏</Button>:<Button onClick={()=>handlePostFavorite(collection.id)}>收藏</Button>
+                  }
                 </Card.Body>
-                
               </Card>
             )
         }

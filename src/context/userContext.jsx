@@ -38,12 +38,7 @@ export const AuthProvider=({children})=>{
             password:data.password
           })
           const tempPayload=userData.data.token
-          if(tempPayload&&userData.data.user.isAdmin===true){
-            setIsAuthenticated(true)
-            setIsAdminAuthenticated(true)
-            setPayload(tempPayload)
-            localStorage.setItem('authToken',userData.data.token)
-          }else if(tempPayload&&!tempPayload.isAdmin){
+          if(tempPayload){
             setIsAuthenticated(true)
             setIsAdminAuthenticated(false)
             setPayload(tempPayload)

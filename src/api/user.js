@@ -33,3 +33,44 @@ export const checkUser =async(authToken)=>{
     console.error(err)
   }
 }
+
+export const getFavorite =async(authToken)=>{
+  try{
+    const res=await axios.get(baseUrl+'/users/favorites',{
+      headers:{
+        Authorization:'Bearer '+ authToken
+      }
+    })
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const postFavorite =async(payload)=>{
+  try{
+    const {collectionId,authToken}=payload
+    const res=await axios.post(baseUrl+'/users/favorites',{collectionId},{
+      headers:{
+        Authorization:'Bearer '+ authToken
+      }
+    })
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}
+
+export const deleteFavorite =async(payload)=>{
+  try{
+    const {collectionId,authToken}=payload
+    const res=await axios.delete(baseUrl+`/users/favorites/${collectionId}`,{
+      headers:{
+        Authorization:'Bearer '+ authToken
+      }
+    })
+    return res.data
+  }catch(err){
+    console.error(err)
+  }
+}

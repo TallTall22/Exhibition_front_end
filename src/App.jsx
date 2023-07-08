@@ -15,6 +15,7 @@ import CollectionsPage from './pages/forestage/collectionsPage/collectionsPage';
 import ExhibitionPage from './pages/forestage/exhibitionsPage/exhibitionPage';
 import ExhibitionsPage from './pages/forestage/exhibitionsPage/exhibitionsPage';
 import HomePage from './pages/forestage/homePage/homePage';
+import MemberPage from './pages/forestage/user/memberPage';
 import TicketPage from './pages/forestage/ticket/ticketPage';
 import TicketsPage from './pages/forestage/ticket/ticketsPage';
 import UserTicketPage from './pages/forestage/ticket/userTicketPage';
@@ -23,6 +24,7 @@ import Signup from './pages/forestage/user/signup';
 import VideoPage from './pages/forestage/videoPage';
 import './reset.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import MemberFavoritePage from './pages/forestage/user/memberFavoritePage';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
             <Route path='/tickets' element={<TicketsPage/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/signin' element={<Signin/>}/>
+            <Route path='/member' element={<MemberPage/>}/>
+            <Route path='/favorites' element={<MemberFavoritePage/>}/>
             <Route path='/' element={<HomePage/>}/>
           </Routes>
           </Main>

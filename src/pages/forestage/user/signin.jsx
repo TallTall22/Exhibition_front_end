@@ -2,7 +2,6 @@ import { Button, Form } from "react-bootstrap"
 import StyledCreateInputgroup from "../../../components/input/input"
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signIn } from "../../../api/user";
 import style from './signin.module.scss'
 import { useAuth } from "../../../context/userContext";
 
@@ -23,11 +22,11 @@ function Signin(){
 
    const handleSubmit=async(e)=>{
     e.preventDefault()
+    if(!email||!password) return ;
     const status=await signin({email,password})
     if(status==='success'){
       setEmail('');
       setPassword('');
-
     }
   }
 
