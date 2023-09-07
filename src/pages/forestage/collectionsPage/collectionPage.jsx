@@ -2,15 +2,12 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getCollection } from "../../../api/collection"
 import { Figure } from "react-bootstrap"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import style from './collectionPage.module.scss'
-import { useAuth } from "../../../context/userContext"
 
 function CollectionPage(){
   const [collection,setCollection]=useState([])
   const [scale,setScale]=useState(1)
-  const {isAuthenticated}=useAuth() 
-  const navigate=useNavigate() 
   const params=useParams()
   const {id}=params
 
@@ -34,11 +31,8 @@ function CollectionPage(){
       const collection=data.collection
       setCollection(collection)
     }
-    if(!isAuthenticated){
-      navigate('/signin')
-    }
     getCollectionAsync()
-  },[id,isAuthenticated,navigate])
+  },[id])
   return (
     <div className="pb-5">
       {
